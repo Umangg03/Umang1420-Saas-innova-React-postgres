@@ -30,7 +30,7 @@ return(
         <h1>Character Counter</h1>
         <label>Write Bio: </label>
         <input  type="text" value={word} onChange={(e)=>setWord(()=>(e.target.value))}/>
-        <p style={{backgroundColor:'beige'}}>{word.trim()}</p>
+        <p style={{backgroundColor:'beige', height:'fit-content', minHeight:'30px', padding:'10px'}}>{word.trim()}</p>
         <p style={{fontSize : '15px', color : 'red'}}>{ word.length> 100 ? 'You Exceed the text limit ':''}</p><br/><br/>
         <p style={{color : word.length > 100 ? 'red' : 'black'}}>Character Length: {word.trim().length}</p>
     </div>
