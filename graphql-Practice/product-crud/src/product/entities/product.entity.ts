@@ -8,5 +8,7 @@ export class Product {
 
   @Field()
   productName: String;
-  
+ 
+  @Field()
+  isBooked: Boolean;
 }
