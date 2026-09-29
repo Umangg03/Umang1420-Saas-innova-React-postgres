@@ -5,23 +5,38 @@
 }
 
 nav{
-    width: 300px;
+    width: 280px;
     height: 100vh;
-    display: flex;
-    flex-wrap: wrap;
     padding: 10px;
     background-color: #17372e;
     color: #e9f0e9;
+    text-align: center;
 }
 
 a{
     color: #e9f0e9;
     text-decoration: none;
+    margin: 5px;
 }
 
 .links{
-    width: 300px;
+    padding: 10px;
+    margin: 100px 0 0 0;
+    width: 200px;
+    height: 150px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+}
+
+.nav2{
+    background-color: #f8faf7;
+    width: 100%;
+    height: 70px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
 }
