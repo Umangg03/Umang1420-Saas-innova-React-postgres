@@ -5,9 +5,10 @@
 }
 
 nav{
+    width: 300px;
+    height: 100vh;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-wrap: wrap;
     padding: 10px;
     background-color: #17372e;
     color: #e9f0e9;
@@ -21,5 +22,6 @@ a{
 .links{
     width: 300px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
 }
