@@ -6,7 +6,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 export class Product {
 
   @PrimaryGeneratedColumn()
-  @Field(() => Int,{ nullable:true })
+  @Field(() => Int,{ nullable: true })
   productId: number;
 
   @Column()
