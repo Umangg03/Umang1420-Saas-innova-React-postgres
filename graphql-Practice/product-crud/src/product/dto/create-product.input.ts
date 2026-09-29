@@ -1,7 +1,15 @@
 import { InputType, Int, Field } from '@nestjs/graphql';
+import { PrimaryGeneratedColumn } from 'typeorm';
 
 @InputType()
 export class CreateProductInput {
-  @Field(() => Int, { description: 'Example field (placeholder)' })
-  exampleField: number;
+  @PrimaryGeneratedColumn()
+  @Field(() => Int)
+  productId: number;
+
+  @Field()
+  productName: string;
+
+  @Field()
+  isBooked: boolean;
 }
