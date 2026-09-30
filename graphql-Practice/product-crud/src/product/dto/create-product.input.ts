@@ -4,7 +4,6 @@ import { PrimaryGeneratedColumn } from 'typeorm';
 @InputType()
 export class CreateProductInput {
   @PrimaryGeneratedColumn()
-  @Field(() => Int)
   productId: number;
 
   @Field()

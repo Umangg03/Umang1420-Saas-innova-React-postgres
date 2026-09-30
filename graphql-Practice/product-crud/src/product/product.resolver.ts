@@ -8,7 +8,7 @@ import { UpdateProductInput } from './dto/update-product.input.js';
 export class ProductResolver {
   constructor(private readonly productService: ProductService) {}
 
-  @Mutation(() => Product)
+  @Mutation(() => String)
   createProduct(@Args('createProductInput') createProductInput: CreateProductInput) {
     return this.productService.create(createProductInput);
   }
@@ -23,12 +23,12 @@ export class ProductResolver {
     return this.productService.findOne(id);
   }
 
-  @Mutation(() => Product)
+  @Mutation(() => String)
   updateProduct(@Args('updateProductInput') updateProductInput: UpdateProductInput) {
     return this.productService.update(updateProductInput.productId, updateProductInput);
   }
 
-  @Mutation(() => Product)
+  @Mutation(() => String)
   removeProduct(@Args('id', { type: () => Int }) id: number) {
     return this.productService.remove(id);
   }

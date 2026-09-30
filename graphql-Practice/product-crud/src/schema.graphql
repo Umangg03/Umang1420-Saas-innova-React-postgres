@@ -14,19 +14,18 @@ type Query {
 }
 
 type Mutation {
-  createProduct(createProductInput: CreateProductInput!): Product!
-  updateProduct(updateProductInput: UpdateProductInput!): Product!
-  removeProduct(id: Int!): Product!
+  createProduct(createProductInput: CreateProductInput!): String!
+  updateProduct(updateProductInput: UpdateProductInput!): String!
+  removeProduct(id: Int!): String!
 }
 
 input CreateProductInput {
-  productId: Int!
   productName: String!
   isBooked: Boolean!
 }
 
 input UpdateProductInput {
-  productId: Int!
   productName: String
   isBooked: Boolean
+  productId: Int!
 }

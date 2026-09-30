@@ -14,13 +14,14 @@ export class ProductService {
   ) {}
   async create(createProductInput: CreateProductInput) {
     const product = this.productsRepository.create(createProductInput);
-    return await this.productsRepository.save(product);
+    await this.productsRepository.save(product);
+    return `New Product has been Added`
   }
 
   async findAll() {
     return await this.productsRepository.find({
       order: {
-        productId: 'desc',
+        productId: 'asc',
       },
     });
   }
@@ -36,11 +37,13 @@ export class ProductService {
   async update(id: number, updateProductInput: UpdateProductInput) {
     const product = await this.findOne(id);
     Object.assign(product, updateProductInput);
-    return await this.productsRepository.save(product);
+    await this.productsRepository.save(product);
+    return `Product ${id} has been Updated!`
   }
 
   async remove(id: number) {
     const product = await this.findOne(id);
-    return await this.productsRepository.remove(product);
+    await this.productsRepository.remove(product);
+    return `Product ${id} has been Deleted!`
   }
 }

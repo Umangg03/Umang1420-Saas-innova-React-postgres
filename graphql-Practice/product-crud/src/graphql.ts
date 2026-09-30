@@ -9,15 +9,14 @@
 /* eslint-disable */
 
 export interface CreateProductInput {
-    productId: number;
     productName: string;
     isBooked: boolean;
 }
 
 export interface UpdateProductInput {
-    productId: number;
     productName?: Nullable<string>;
     isBooked?: Nullable<boolean>;
+    productId: number;
 }
 
 export interface Product {
@@ -32,9 +31,9 @@ export interface IQuery {
 }
 
 export interface IMutation {
-    createProduct(createProductInput: CreateProductInput): Product | Promise<Product>;
-    updateProduct(updateProductInput: UpdateProductInput): Product | Promise<Product>;
-    removeProduct(id: number): Product | Promise<Product>;
+    createProduct(createProductInput: CreateProductInput): string | Promise<string>;
+    updateProduct(updateProductInput: UpdateProductInput): string | Promise<string>;
+    removeProduct(id: number): string | Promise<string>;
 }
 
 type Nullable<T> = T | null;
