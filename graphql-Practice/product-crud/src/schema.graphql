@@ -8,15 +8,26 @@ type Product {
   isBooked: Boolean!
 }
 
+type Users {
+  userId: Int
+  username: String!
+  password: String!
+}
+
 type Query {
   products: [Product!]!
   product(id: Int!): Product!
+  users: [Users!]!
+  user(id: Int!): Users!
 }
 
 type Mutation {
   createProduct(createProductInput: CreateProductInput!): String!
   updateProduct(updateProductInput: UpdateProductInput!): String!
   removeProduct(id: Int!): String!
+  createUser(createUserInput: CreateUserInput!): String!
+  updateUser(updateUserInput: UpdateUserInput!): String!
+  removeUser(id: Int!): String!
 }
 
 input CreateProductInput {
@@ -28,4 +39,15 @@ input UpdateProductInput {
   productName: String
   isBooked: Boolean
   productId: Int!
+}
+
+input CreateUserInput {
+  username: String!
+  password: String!
+}
+
+input UpdateUserInput {
+  username: String
+  password: String
+  id: Int!
 }

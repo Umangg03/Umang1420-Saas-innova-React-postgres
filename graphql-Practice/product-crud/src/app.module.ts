@@ -5,6 +5,8 @@ import {ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Product } from './product/entities/product.entity.js';
 import { join } from 'path';
+import { UserModule } from './user/user.module.js';
+import { Users } from './user/entities/user.entity.js';
 
 @Module({
   imports: [
@@ -14,7 +16,7 @@ import { join } from 'path';
       username: 'postgres',
       password: 'Umang#2005',
       database: 'graph',
-      entities: [ Product ],
+      entities: [ Product , Users],
       autoLoadEntities: true,
       synchronize: true
     }),
@@ -28,7 +30,8 @@ import { join } from 'path';
       definitions : { 
         path : join(process.cwd(),'src/graphql.ts')
       }
-    })
+    }),
+    UserModule
   ],
   controllers: [],
   providers: [],
