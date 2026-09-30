@@ -1,0 +1,32 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Product {
+  productId: Int
+  productName: String!
+  isBooked: Boolean!
+}
+
+type Query {
+  products: [Product!]!
+  product(id: Int!): Product!
+}
+
+type Mutation {
+  createProduct(createProductInput: CreateProductInput!): Product!
+  updateProduct(updateProductInput: UpdateProductInput!): Product!
+  removeProduct(id: Int!): Product!
+}
+
+input CreateProductInput {
+  productId: Int!
+  productName: String!
+  isBooked: Boolean!
+}
+
+input UpdateProductInput {
+  productId: Int!
+  productName: String
+  isBooked: Boolean
+}

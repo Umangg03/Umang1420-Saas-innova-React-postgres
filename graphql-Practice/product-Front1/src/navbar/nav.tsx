@@ -1,4 +1,5 @@
 import "./nav.css";
+import Products from '../products.tsx'
 
 const Nav = () => {
   return (
@@ -13,6 +14,7 @@ const Nav = () => {
           </div>
           <div className="userInfo"></div>
         </nav>
+        <div className="main-section" style={{width:"100%"}}>
         <div className="nav2">
           <div className="head" style={{ display: "flex" }}>
             <p style={{ color: "gray" }}>Saas Innova /</p> <p> Products</p>
@@ -42,6 +44,10 @@ const Nav = () => {
             >
               UC
             </p>
+          </div>
+          </div>
+          <div className="main-content">
+            <Products/>
           </div>
         </div>
       </div>
