@@ -1,5 +1,5 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity()
 @ObjectType()
@@ -12,8 +12,22 @@ export class Product {
   @Column()
   @Field()
   productName: string;
+  
+  @Column()
+  @Field()
+  stock: number;
  
   @Column({ default: false })
   @Field()
-  isBooked: boolean;
+  status: boolean;
+
+  @CreateDateColumn({ type: 'timestamp', name: 'created_at' })
+   @Field(() => Date)
+  createdAt: Date;
+
+
+  @UpdateDateColumn({ type: 'timestamp', name: 'updated_at' })
+   @Field(() => Date)
+  updatedAt: Date;
 }
+

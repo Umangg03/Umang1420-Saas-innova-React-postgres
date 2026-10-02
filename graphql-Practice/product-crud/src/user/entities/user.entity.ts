@@ -15,4 +15,12 @@ export class Users {
   @Column()
   @Field()
   password : string;
+
+  @Column()
+  @Field()
+  email: String;
+
+  @Column()
+  @Field()
+  role: String;
 }

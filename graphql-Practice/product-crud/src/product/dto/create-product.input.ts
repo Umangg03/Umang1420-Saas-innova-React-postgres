@@ -10,5 +10,8 @@ export class CreateProductInput {
   productName: string;
 
   @Field()
-  isBooked: boolean;
+  stock: number;
+
+  @Field()
+  status: boolean;
 }

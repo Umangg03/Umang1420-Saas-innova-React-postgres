@@ -10,12 +10,14 @@
 
 export interface CreateProductInput {
     productName: string;
-    isBooked: boolean;
+    stock: number;
+    status: boolean;
 }
 
 export interface UpdateProductInput {
     productName?: Nullable<string>;
-    isBooked?: Nullable<boolean>;
+    stock?: Nullable<number>;
+    status?: Nullable<boolean>;
     productId: number;
 }
 
@@ -33,13 +35,18 @@ export interface UpdateUserInput {
 export interface Product {
     productId?: Nullable<number>;
     productName: string;
-    isBooked: boolean;
+    stock: number;
+    status: boolean;
+    createdAt: DateTime;
+    updatedAt: DateTime;
 }
 
 export interface Users {
     userId?: Nullable<number>;
     username: string;
     password: string;
+    email: string;
+    role: string;
 }
 
 export interface IQuery {
@@ -58,4 +65,5 @@ export interface IMutation {
     removeUser(id: number): string | Promise<string>;
 }
 
+export type DateTime = any;
 type Nullable<T> = T | null;

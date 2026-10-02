@@ -1,5 +1,46 @@
+//@ts-expect-error
 import './App.css'
-const products = () => {
+import { useState, useEffect } from 'react'
+
+interface Product {
+    productId: number;
+  productName: string;
+  stock: number;
+  status: boolean;
+}
+
+const productsQuery = `
+    query Products {
+        products {
+            productId
+            productName
+            stock
+            status
+        }
+    }
+`;
+
+const Products = () => {
+        const [productsList, setProductsList] = useState<Product[]>([])
+        const [error, setError] = useState('')
+
+        useEffect(() => {
+        fetch('http://localhost:3000/graphql', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ query: productsQuery }),
+        })
+            .then(async (response) => {
+                const result = await response.json()
+                if (!response.ok || result.errors) {
+                    throw new Error(result.errors?.[0]?.message ?? 'Could not load products')
+                }
+                return result.data.products as Product[]
+            })
+            .then(setProductsList)
+            .catch((err: Error) => setError(err.message))
+  }, []);
+
   return (
     <>
     <div className="product-page">
@@ -33,16 +74,26 @@ const products = () => {
         </div>
         <div className="table-data">
         <table>
+            <thead>
             <tr>
                 <th>Product Name</th>
-                <th>Price</th>
+                <th>Stock</th>
                 <th>Status</th>
             </tr>
-            <tr>
-                <td>Moniter</td>
-                <td>299</td>
-                <td>Booked</td>
-            </tr>
+            </thead>
+            <tbody>
+                {error ? (
+                    <tr><td colSpan={3}>{error}</td></tr>
+                ) : productsList.length === 0 ? (
+                    <tr><td colSpan={3}>No products found</td></tr>
+                ) : productsList.map((product) => (
+                    <tr key={product.productId}>
+                        <td>{product.productName}</td>
+                        <td>{product.stock}</td>
+                        <td>{product.status ? 'Out of stock' : 'In stock'}</td>
+                    </tr>
+                ))}
+            </tbody>
         </table>
         </div>
     </div>
@@ -50,4 +101,4 @@ const products = () => {
   )
 }
 
-export default products
+export default Products
